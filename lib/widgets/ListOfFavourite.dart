@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/views/widgets/CustomCartItem.dart';
-import 'package:online_groceries_app/views/widgets/FavItem.dart';
+import 'package:online_groceries_app/widgets/FavItem.dart';
+
 
 class ListOfFav extends StatelessWidget{
+  const ListOfFav({super.key});
+
   @override
   Widget build(BuildContext context) {
     return  Container(
