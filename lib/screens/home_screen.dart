@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:online_groceries_app/screens/AccountView.dart';
 
 import '../widgets/custom_gnav_bar.dart';
 import '../widgets/custom_product_container.dart';
@@ -30,7 +30,9 @@ void navigate4(BuildContext context) {
   Navigator.pushNamed(context, FavouriteView.id);
 }
 
-void navigate5(BuildContext context) {}
+void navigate5(BuildContext context) {
+  Navigator.pushNamed(context, AccountView.id);
+}
 
 class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = '';

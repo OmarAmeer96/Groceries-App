@@ -1,17 +1,11 @@
-// ------------------------------ Omar Ameer ---------------------------------
-
-
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:online_groceries_app/screens/sign_in_screen.dart';
 
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
 import '../widgets/show_snack_bar.dart';
-import 'home_screen.dart';
-
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -24,18 +18,25 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   String? email;
-
   String? password;
-
   String? rePassword;
 
   final _emailController = TextEditingController();
-
   final _passwordController = TextEditingController();
-
   final _rePasswordController = TextEditingController();
-
   final _form = GlobalKey<FormState>();
+  bool _isLoading = false;
+
+  Future<void> _sendEmailVerification(User user) async {
+    await user.sendEmailVerification();
+    // ignore: use_build_context_synchronously
+    showSnackBar(
+      context,
+      "A verification email has been sent to your email address.",
+    );
+    // ignore: use_build_context_synchronously
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -205,36 +206,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30,
                     ),
                     Center(
-                      child: CustomMainButton(
-                        text: "Sign Up",
-                        onPressed: () async {
-                          if (_form.currentState!.validate()) {
-                            try {
-                              // ignore: unused_local_variable
-                              UserCredential user = await FirebaseAuth.instance
-                                  .createUserWithEmailAndPassword(
-                                email: email!,
-                                password: password!,
-                              );
-                              // ignore: use_build_context_synchronously
-                              showSnackBar(context,
-                                  "Your account successfully created.");
-                              // ignore: use_build_context_synchronously
-                              Navigator.pushNamed(context, HomeScreen.id);
-                            } on FirebaseAuthException catch (e) {
-                              if (e.code == 'weak-password') {
-                                showSnackBar(context,
-                                    "The password provided is too weak.");
-                              } else if (e.code == 'email-already-in-use') {
-                                showSnackBar(context,
-                                    "The account already exists for that email.");
-                              }
-                            } catch (e) {
-                              showSnackBar(context, e.toString());
-                            }
-                          }
-                        },
-                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator()
+                          : CustomMainButton(
+                              text: "Sign Up",
+                              onPressed: () async {
+                                if (_form.currentState!.validate()) {
+                                  setState(() {
+                                    _isLoading = true;
+                                  });
+                                  try {
+                                    UserCredential userCredential =
+                                        await FirebaseAuth.instance
+                                            .createUserWithEmailAndPassword(
+                                      email: email!,
+                                      password: password!,
+                                    );
+                                    await _sendEmailVerification(
+                                        userCredential.user!);
+                                    // ignore: use_build_context_synchronously
+                                    showSnackBar(
+                                      context,
+                                      "Your account successfully created.\nPlease verify your email then Sign in.",
+                                    );
+                                    setState(() {
+                                      _isLoading = false;
+                                    });
+                                  } on FirebaseAuthException catch (e) {
+                                    if (e.code == 'weak-password') {
+                                      showSnackBar(context,
+                                          "The password provided is too weak.");
+                                    } else if (e.code ==
+                                        'email-already-in-use') {
+                                      showSnackBar(context,
+                                          "The account already exists for that email.");
+                                    }
+                                    setState(() {
+                                      _isLoading = false;
+                                    });
+                                  } catch (e) {
+                                    showSnackBar(context, e.toString());
+                                    setState(() {
+                                      _isLoading = false;
+                                    });
+                                  }
+                                }
+                              },
+                            ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -254,7 +272,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.pop(context);
+                              Navigator.pushNamed(context, SignInScreen.id);
                             },
                             child: const Text(
                               "Sign In",

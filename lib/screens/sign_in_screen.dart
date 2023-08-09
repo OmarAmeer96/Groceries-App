@@ -1,33 +1,34 @@
-// ------------------------------ Omar Ameer ---------------------------------
-
-
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:online_groceries_app/screens/sign_up_screen.dart';
 
+import '../widgets/auth_util.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
 import '../widgets/show_snack_bar.dart';
 import 'home_screen.dart';
 
-
-// ignore: must_be_immutable
-class SignInScreen extends StatelessWidget {
-  SignInScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   static String id = "SignInScreen";
 
+  @override
+  // ignore: library_private_types_in_public_api
+  _SignInScreenState createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
   final _form = GlobalKey<FormState>();
   String? email;
   String? password;
   String? rePassword;
 
   final _emailController = TextEditingController();
-
   final _passwordController = TextEditingController();
+
+  bool _isLoading = false;
 
   bool isValidEmail(String email) {
     final emailRegex =
@@ -62,9 +63,7 @@ class SignInScreen extends StatelessWidget {
             Column(
               children: [
                 Image.asset("assets/images/loginup.png"),
-                const SizedBox(
-                  height: 265,
-                ),
+                const SizedBox(height: 265),
                 Image.asset("assets/images/log2Image.png"),
               ],
             ),
@@ -80,9 +79,7 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 250,
-                    ),
+                    const SizedBox(height: 250),
                     const Text(
                       "Sign In",
                       style: TextStyle(
@@ -92,11 +89,9 @@ class SignInScreen extends StatelessWidget {
                         fontFamily: "Gilroy-Medium",
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     const Text(
-                      "Enter your emails and password",
+                      "Enter your email and password",
                       style: TextStyle(
                         color: Color(0xff7C7C7C),
                         fontSize: 16,
@@ -104,9 +99,7 @@ class SignInScreen extends StatelessWidget {
                         fontFamily: "Gilroy-Medium",
                       ),
                     ),
-                    const SizedBox(
-                      height: 35,
-                    ),
+                    const SizedBox(height: 35),
                     CustomEmailTextField(
                       controller: _emailController,
                       onChanged: (data) {
@@ -121,9 +114,7 @@ class SignInScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                     CustomPasswordTextField(
                       controller: _passwordController,
                       text: "PASSWORD",
@@ -139,9 +130,7 @@ class SignInScreen extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                     InkWell(
                       onTap: () {
                         _resetPassword(context);
@@ -162,43 +151,53 @@ class SignInScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     Center(
-                      child: CustomMainButton(
-                        text: "Sign In",
-                        onPressed: () async {
-                          if (_form.currentState!.validate()) {
-                            try {
-                              // ignore: unused_local_variable
-                              UserCredential user = await FirebaseAuth.instance
-                                  .signInWithEmailAndPassword(
-                                email: email!,
-                                password: password!,
-                              );
-                              // ignore: use_build_context_synchronously
-                              showSnackBar(context, "Successfully signed in.");
-                              // ignore: use_build_context_synchronously
-                              Navigator.pushNamed(context, HomeScreen.id);
-                            } on FirebaseAuthException catch (e) {
-                              if (e.code == 'user-not-found') {
-                                showSnackBar(
-                                    context, "No user found for that email.");
-                              } else if (e.code == 'wrong-password') {
-                                showSnackBar(context,
-                                    "Wrong password provided for that user.");
-                              }
-                            } catch (e) {
-                              showSnackBar(context, e.toString());
-                            }
-                          }
-                        },
-                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator()
+                          : CustomMainButton(
+                              text: "Sign In",
+                              onPressed: () async {
+                                if (_form.currentState!.validate()) {
+                                  setState(() {
+                                    _isLoading = true;
+                                  });
+                                  try {
+                                    // ignore: unused_local_variable
+                                    UserCredential user = await FirebaseAuth
+                                        .instance
+                                        .signInWithEmailAndPassword(
+                                      email: email!,
+                                      password: password!,
+                                    );
+                                    // ignore: use_build_context_synchronously
+                                    showSnackBar(
+                                        context, "Successfully signed in.");
+                                        AuthUtil.storeUserEmail(email!);
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.pushNamed(context, HomeScreen.id);
+                                  } on FirebaseAuthException catch (e) {
+                                    if (e.code == 'user-not-found') {
+                                      showSnackBar(context,
+                                          "No user found for that email.");
+                                    } else if (e.code == 'wrong-password') {
+                                      showSnackBar(context,
+                                          "Wrong password provided for that user.");
+                                    }
+                                  } catch (e) {
+                                    showSnackBar(context, e.toString());
+                                  } finally {
+                                    setState(
+                                      () {
+                                        _isLoading = false; // End loading state
+                                      },
+                                    );
+                                  }
+                                }
+                              },
+                            ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
