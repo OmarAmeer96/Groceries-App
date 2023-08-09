@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         SplashScreen.id: (context) => const SplashScreen(),
         OnBoardingScreen.id: (context) => OnBoardingScreen(),
         GetStartedScreen.id: (context) => const GetStartedScreen(),
-        SignInScreen.id: (context) => SignInScreen(),
+        SignInScreen.id: (context) => const SignInScreen(),
         SignUpScreen.id: (context) => const SignUpScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
         AppleDetail.id: (context) => const AppleDetail(),
