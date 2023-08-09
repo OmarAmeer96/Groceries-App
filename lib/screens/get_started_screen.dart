@@ -1,13 +1,9 @@
 // ------------------------------ Omar Ameer ---------------------------------
 
-
-
-
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_main_button.dart';
 import 'sign_in_screen.dart';
-
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -37,7 +33,7 @@ class GetStartedScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 480,
+              height: 460,
             ),
             Image.asset(
               "assets/images/Group 1.png",

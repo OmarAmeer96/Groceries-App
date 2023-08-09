@@ -17,12 +17,12 @@ class OnBoardingScreen extends StatelessWidget {
       titleTextStyle: const TextStyle(
         color: Color(0xff8D070F),
         fontSize: 28,
-        fontFamily: 'Gilroy-Bold',
+        fontFamily: 'Gilroy-Heavy',
       ),
       subTitleTextStyle: TextStyle(
         color: Colors.black.withOpacity(0.7),
-        fontSize: 18,
-        fontFamily: 'Gilroy-Regular',
+        fontSize: 16,
+        fontFamily: 'Gilroy-Bold',
       ),
     ),
     Introduction(
@@ -33,12 +33,12 @@ class OnBoardingScreen extends StatelessWidget {
       titleTextStyle: const TextStyle(
         color: Color(0xff8D070F),
         fontSize: 28,
-        fontFamily: 'Gilroy-Bold',
+        fontFamily: 'Gilroy-Heavy',
       ),
       subTitleTextStyle: TextStyle(
         color: Colors.black.withOpacity(0.7),
-        fontSize: 18,
-        fontFamily: 'Gilroy-Regular',
+        fontSize: 16,
+        fontFamily: 'Gilroy-Bold',
       ),
     ),
     Introduction(
@@ -49,12 +49,12 @@ class OnBoardingScreen extends StatelessWidget {
       titleTextStyle: const TextStyle(
         color: Color(0xff8D070F),
         fontSize: 28,
-        fontFamily: 'Gilroy-Bold',
+        fontFamily: 'Gilroy-Heavy',
       ),
       subTitleTextStyle: TextStyle(
         color: Colors.black.withOpacity(0.7),
-        fontSize: 18,
-        fontFamily: 'Gilroy-Regular',
+        fontSize: 16,
+        fontFamily: 'Gilroy-Bold',
       ),
     ),
   ];
