@@ -3,9 +3,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/CustomButton.dart';
-import 'package:online_groceries_app/widgets/Header.dart';
-import 'package:online_groceries_app/widgets/ListOfFavourite.dart';
+
+import '../widgets/CustomButton.dart';
+import '../widgets/Header.dart';
+import '../widgets/ListOfFavourite.dart';
+
 
 class FavouriteView extends StatelessWidget {
   const FavouriteView({super.key});

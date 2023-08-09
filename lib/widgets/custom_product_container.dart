@@ -3,12 +3,13 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/apple_detail.dart';
-import 'package:online_groceries_app/screens/bananas_detail.dart';
-import 'package:online_groceries_app/screens/beef_bone_detail.dart';
-import 'package:online_groceries_app/screens/bell_pepper_red_detail.dart';
-import 'package:online_groceries_app/screens/broiler_chicken.dart';
-import 'package:online_groceries_app/screens/ginger_detail.dart';
+import '../screens/apple_detail.dart';
+import '../screens/bananas_detail.dart';
+import '../screens/beef_bone_detail.dart';
+import '../screens/bell_pepper_red_detail.dart';
+import '../screens/broiler_chicken.dart';
+import '../screens/ginger_detail.dart';
+
 
 class ProductContainer extends StatelessWidget {
   final String imagePath;

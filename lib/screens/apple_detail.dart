@@ -1,7 +1,8 @@
 // ------------------------------ Mohamed Elsanteel ---------------------------------
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/customproductdetailscreen.dart';
+
+import '../widgets/customproductdetailscreen.dart';
 
 class AppleDetail extends StatefulWidget {
   const AppleDetail({super.key});

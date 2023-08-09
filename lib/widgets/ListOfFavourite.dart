@@ -3,8 +3,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/FavItem.dart';
 
+import 'FavItem.dart';
 
 class ListOfFav extends StatelessWidget{
   const ListOfFav({super.key});

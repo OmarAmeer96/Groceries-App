@@ -2,7 +2,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/CustomAddMinusButtonIcon.dart';
+import 'CustomAddMinusButtonIcon.dart';
 
 class CustomCartItem extends StatelessWidget {
   const CustomCartItem({super.key});

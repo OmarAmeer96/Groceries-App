@@ -3,7 +3,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/CustomCartItem.dart';
+import 'CustomCartItem.dart';
 
 class ListVieww extends StatelessWidget{
   @override

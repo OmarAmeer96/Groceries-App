@@ -5,12 +5,14 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/home_screen.dart';
 import 'package:online_groceries_app/screens/sign_up_screen.dart';
-import 'package:online_groceries_app/widgets/custom_email_text_field.dart';
-import 'package:online_groceries_app/widgets/custom_main_button.dart';
-import 'package:online_groceries_app/widgets/custom_password_text_field.dart';
-import 'package:online_groceries_app/widgets/show_snack_bar.dart';
+
+import '../widgets/custom_email_text_field.dart';
+import '../widgets/custom_main_button.dart';
+import '../widgets/custom_password_text_field.dart';
+import '../widgets/show_snack_bar.dart';
+import 'home_screen.dart';
+
 
 // ignore: must_be_immutable
 class SignInScreen extends StatelessWidget {

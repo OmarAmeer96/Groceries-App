@@ -4,9 +4,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/custom_product_container.dart';
 
 import '../widgets/custom_gnav_bar.dart';
+import '../widgets/custom_product_container.dart';
 import 'explore_screen.dart';
 import 'home_screen.dart';
 

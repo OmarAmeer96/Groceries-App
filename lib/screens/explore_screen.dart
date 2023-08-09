@@ -1,10 +1,11 @@
 // ------------------------------ Mohamed Elsanteel ---------------------------------
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/home_screen.dart';
-import 'package:online_groceries_app/widgets/custom_gnav_bar.dart';
+
+import '../widgets/custom_gnav_bar.dart';
 import 'beverages_screen.dart';
 import 'dairy_and_eggs.dart';
+import 'home_screen.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({Key? key}) : super(key: key);

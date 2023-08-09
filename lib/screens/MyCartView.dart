@@ -3,9 +3,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/CustomButton.dart';
-import 'package:online_groceries_app/widgets/Header.dart';
-import 'package:online_groceries_app/widgets/ListView.dart';
+
+import '../widgets/CustomButton.dart';
+import '../widgets/Header.dart';
+import '../widgets/ListView.dart';
+
 
 class MyCartView extends StatelessWidget{
   const MyCartView({super.key});

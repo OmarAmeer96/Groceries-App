@@ -3,7 +3,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/onboarding_screen.dart';
+
+import 'onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = "SplashScreen";

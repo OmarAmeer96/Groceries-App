@@ -4,8 +4,10 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/sign_in_screen.dart';
-import 'package:online_groceries_app/widgets/custom_main_button.dart';
+
+import '../widgets/custom_main_button.dart';
+import 'sign_in_screen.dart';
+
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});

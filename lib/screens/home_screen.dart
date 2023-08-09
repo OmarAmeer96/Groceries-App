@@ -2,10 +2,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/FavouriteView.dart';
-import 'package:online_groceries_app/widgets/custom_product_container.dart';
+
 
 import '../widgets/custom_gnav_bar.dart';
+import '../widgets/custom_product_container.dart';
+import 'FavouriteView.dart';
 import 'explore_screen.dart';
 
 class HomeScreen extends StatefulWidget {

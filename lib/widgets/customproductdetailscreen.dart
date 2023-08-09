@@ -1,8 +1,7 @@
 // ------------------------------ Mohamed Elsanteel  ---------------------------------
 
-
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/widgets/custom_main_button.dart';
+import 'custom_main_button.dart';
 
 class CustomProductDetail extends StatefulWidget {
   final String backgroundImagePath;
@@ -45,7 +44,7 @@ class _CustomProductDetailState extends State<CustomProductDetail> {
                   Image.asset(widget.backgroundImagePath,
                       width: widget.width, height: widget.height),
                   Padding(
-                    padding: EdgeInsets.only(top: 60, left: 10),
+                    padding: const EdgeInsets.only(top: 60, left: 10),
                     child: Row(
                       children: [
                         IconButton(
