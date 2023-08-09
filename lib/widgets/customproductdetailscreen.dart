@@ -32,6 +32,23 @@ class CustomProductDetail extends StatefulWidget {
 }
 
 class _CustomProductDetailState extends State<CustomProductDetail> {
+  bool isFavorite = false;
+  int quantity = 1;
+  void increaseQuantity() {
+    setState(() {
+      quantity++;
+    });
+  }
+
+  // Function to handle decreasing quantity
+  void decreaseQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,19 +88,29 @@ class _CustomProductDetailState extends State<CustomProductDetail> {
                   )
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 20, top: 20, right: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       "Natural Red Apple",
                       style: TextStyle(
                           fontSize: 24,
                           color: Color(0xff181725),
                           fontWeight: FontWeight.bold),
                     ),
-                    Spacer(),
-                    Icon(Icons.favorite_border),
+                    const Spacer(),
+                    IconButton(
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: isFavorite ? Colors.red : null,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isFavorite = !isFavorite;
+                        });
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -104,11 +131,15 @@ class _CustomProductDetailState extends State<CustomProductDetail> {
               Padding(
                 padding: const EdgeInsets.only(left: 19),
                 child: Row(children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: Icon(
-                      Icons.maximize,
-                      color: Color(0xffB3B3B3),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.remove,
+                        color: Color(0xffB3B3B3),
+                      ),
+                      onPressed:
+                          decreaseQuantity, // Call the decreaseQuantity function
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -117,20 +148,26 @@ class _CustomProductDetailState extends State<CustomProductDetail> {
                     width: 45,
                     height: 45,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: const Color(0xffe8e8e8)),
-                        color: Colors.white),
-                    child: const Text(
-                      "1",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: const Color(0xffe8e8e8)),
+                      color: Colors.white,
+                    ),
+                    child: Text(
+                      quantity
+                          .toString(), // Update this line to use the quantity
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                   ),
                   const SizedBox(width: 20),
-                  const Icon(
-                    Icons.add,
-                    color: Color(0xFF8D070F),
-                    size: 30,
+                  IconButton(
+                    icon: const Icon(
+                      Icons.add,
+                      color: Color(0xFF8D070F),
+                      size: 30,
+                    ),
+                    onPressed:
+                        increaseQuantity, // Call the increaseQuantity function
                   ),
                   const Spacer(),
                   const Padding(
