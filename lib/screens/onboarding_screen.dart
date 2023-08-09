@@ -16,12 +16,12 @@ class OnBoardingScreen extends StatelessWidget {
       imageUrl: 'assets/images/onboarding1.png',
       titleTextStyle: const TextStyle(
         color: Color(0xff8D070F),
-        fontSize: 31,
+        fontSize: 28,
         fontFamily: 'Gilroy-Bold',
       ),
       subTitleTextStyle: TextStyle(
         color: Colors.black.withOpacity(0.7),
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Gilroy-Regular',
       ),
     ),
@@ -32,12 +32,12 @@ class OnBoardingScreen extends StatelessWidget {
       imageUrl: 'assets/images/onboarding2.png',
       titleTextStyle: const TextStyle(
         color: Color(0xff8D070F),
-        fontSize: 31,
+        fontSize: 28,
         fontFamily: 'Gilroy-Bold',
       ),
       subTitleTextStyle: TextStyle(
         color: Colors.black.withOpacity(0.7),
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Gilroy-Regular',
       ),
     ),
@@ -48,12 +48,12 @@ class OnBoardingScreen extends StatelessWidget {
       imageUrl: 'assets/images/onboarding3.png',
       titleTextStyle: const TextStyle(
         color: Color(0xff8D070F),
-        fontSize: 31,
+        fontSize: 28,
         fontFamily: 'Gilroy-Bold',
       ),
       subTitleTextStyle: TextStyle(
         color: Colors.black.withOpacity(0.7),
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Gilroy-Regular',
       ),
     ),

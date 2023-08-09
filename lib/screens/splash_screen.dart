@@ -1,7 +1,5 @@
 // ------------------------------ Omar Ameer ---------------------------------
 
-
-
 import 'package:flutter/material.dart';
 
 import 'onboarding_screen.dart';
@@ -38,8 +36,8 @@ class SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Image.asset(
           "assets/images/Group 1.png",
-          width: 250.66,
-          height: 291.48,
+          width: 230.66,
+          height: 250.48,
         ),
       ),
     );
