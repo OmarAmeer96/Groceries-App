@@ -207,7 +207,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     Center(
                       child: _isLoading
-                          ? const CircularProgressIndicator()
+                          ? const CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xff8d0000),
+                              ),
+                            )
                           : CustomMainButton(
                               text: "Sign Up",
                               onPressed: () async {

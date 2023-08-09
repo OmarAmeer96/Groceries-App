@@ -154,7 +154,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     const SizedBox(height: 30),
                     Center(
                       child: _isLoading
-                          ? const CircularProgressIndicator()
+                          ? const CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xff8d0000),
+                              ),
+                            )
                           : CustomMainButton(
                               text: "Sign In",
                               onPressed: () async {
@@ -173,7 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     // ignore: use_build_context_synchronously
                                     showSnackBar(
                                         context, "Successfully signed in.");
-                                        AuthUtil.storeUserEmail(email!);
+                                    AuthUtil.storeUserEmail(email!);
                                     // ignore: use_build_context_synchronously
                                     Navigator.pushNamed(context, HomeScreen.id);
                                   } on FirebaseAuthException catch (e) {
