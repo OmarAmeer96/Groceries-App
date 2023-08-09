@@ -1,7 +1,5 @@
 // ------------------------------ Mohamed Elsanteel  ---------------------------------
 
-
-
 import 'package:flutter/material.dart';
 import '../screens/apple_detail.dart';
 import '../screens/bananas_detail.dart';
@@ -9,7 +7,6 @@ import '../screens/beef_bone_detail.dart';
 import '../screens/bell_pepper_red_detail.dart';
 import '../screens/broiler_chicken.dart';
 import '../screens/ginger_detail.dart';
-
 
 class ProductContainer extends StatelessWidget {
   final String imagePath;
@@ -111,7 +108,11 @@ class ProductContainer extends StatelessWidget {
               const SizedBox(height: 5),
               Row(
                 children: [
-                  Text("\$$productPrice"),
+                  Text(
+                    "\$$productPrice",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: Color(0xff181725)),
+                  ),
                   const Spacer(),
                   Container(
                     width: 40,

@@ -258,6 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: const TextStyle(
                 color: Color(0xff181725),
                 fontWeight: FontWeight.bold,
+                fontFamily: "Gilroy",
                 fontSize: 24)),
         const Spacer(),
         const Text(
@@ -291,7 +292,6 @@ class _HomeScreenState extends State<HomeScreen> {
         productDetails: productDetails2,
         productPrice: productPrice2,
       ),
-      // Add more products for each row as needed
     ].where((product) {
       final lowerCaseQuery = _searchQuery.toLowerCase();
       final lowerCaseProductName = product.productName.toLowerCase();
