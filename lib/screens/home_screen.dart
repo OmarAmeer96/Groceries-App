@@ -220,28 +220,30 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 20,
         ),
         Container(
-            width: 240,
-            height: 105,
-            decoration: BoxDecoration(
-                color: categoryColor2, borderRadius: BorderRadius.circular(20)),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 20,
-                ),
-                Image.asset(categoryImage2),
-                const SizedBox(
-                  width: 15,
-                ),
-                Text(
-                  categoryName2,
-                  style: const TextStyle(
-                      color: Color(0xff3e423f),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                )
-              ],
-            )),
+          width: 240,
+          height: 105,
+          decoration: BoxDecoration(
+              color: categoryColor2, borderRadius: BorderRadius.circular(20)),
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              Image.asset(categoryImage2),
+              const SizedBox(
+                width: 15,
+              ),
+              Text(
+                categoryName2,
+                style: const TextStyle(
+                    color: Color(0xff3e423f),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 20)
       ],
     );
   }
