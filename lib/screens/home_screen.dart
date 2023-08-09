@@ -2,8 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_groceries_app/screens/AccountView.dart';
-
+import '../cubits/homescreen_cubit/homescreen_cubit.dart';
 import '../widgets/custom_gnav_bar.dart';
 import '../widgets/custom_product_container.dart';
 import 'FavouriteView.dart';
@@ -12,6 +13,7 @@ import 'explore_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static String id = "home-screen";
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -35,10 +37,34 @@ void navigate5(BuildContext context) {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _searchQuery = '';
-  int currentIndex = 0;
+  final HomescreenCubit cubit = HomescreenCubit();
+
+  @override
+  void initState() {
+    super.initState();
+    cubit.loadInitialData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<HomescreenCubit, HomescreenState>(
+      bloc: cubit,
+      builder: (context, state) {
+        if (state is HomescreenLoading) {
+          return const Scaffold(
+              body: Center(child: CircularProgressIndicator()));
+        } else if (state is HomescreenLoaded) {
+          return buildHomescreen(state);
+        } else if (state is HomescreenError) {
+          return Scaffold(body: Center(child: Text(state.errorMessage)));
+        }
+        return const Scaffold(body: Center(child: Text('Unknown state.')));
+      },
+    );
+  }
+
+  int currentIndex = 0;
+  Widget buildHomescreen(HomescreenLoaded state) {
     return Scaffold(
       bottomNavigationBar: CustomGNavBar(
         navigate1: () => navigate1(context),
@@ -65,9 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Image.asset('assets/images/orange-carrot.png'),
                 ],
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -76,10 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     "Tanta, Egypt",
                     style: TextStyle(
-                        color: Color(0xff4C4F4D),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  )
+                      color: Color(0xff4C4F4D),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
@@ -91,11 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: TextField(
-                  onChanged: (query) {
-                    setState(() {
-                      _searchQuery = query;
-                    });
-                  },
+                  onChanged: onSearchTextChanged,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.search,
@@ -145,12 +166,12 @@ class _HomeScreenState extends State<HomeScreen> {
               buildRow(boldText: "Groceries"),
               const SizedBox(height: 15),
               SizedBox(
-                height: 105, // Adjust the height as needed
+                height: 105,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 2,
                   itemBuilder: (context, index) {
-                    return _buildCategoryContainer(
+                    return buildCategoryContainer(
                         categoryColor1: const Color(0xfffef2e4),
                         categoryImage1: "assets/images/pulses.png",
                         categoryName1: "Pulses",
@@ -180,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Row _buildCategoryContainer(
+  Row buildCategoryContainer(
       {required Color categoryColor1,
       required String categoryImage1,
       required String categoryName1,
@@ -217,53 +238,90 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 20,
         ),
         Container(
-            width: 240,
-            height: 105,
-            decoration: BoxDecoration(
-                color: categoryColor2, borderRadius: BorderRadius.circular(20)),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 20,
-                ),
-                Image.asset(categoryImage2),
-                const SizedBox(
-                  width: 15,
-                ),
-                Text(
-                  categoryName2,
-                  style: const TextStyle(
-                      color: Color(0xff3e423f),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                )
-              ],
-            )),
+          width: 240,
+          height: 105,
+          decoration: BoxDecoration(
+              color: categoryColor2, borderRadius: BorderRadius.circular(20)),
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              Image.asset(categoryImage2),
+              const SizedBox(
+                width: 15,
+              ),
+              Text(
+                categoryName2,
+                style: const TextStyle(
+                    color: Color(0xff3e423f),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              )
+            ],
+          ),
+        ),
+        const SizedBox(width: 20)
       ],
     );
   }
 
-  Row buildRow({
+  void onSearchTextChanged(String query) {
+    if (cubit.state is HomescreenLoaded) {
+      final loadedState = cubit.state as HomescreenLoaded;
+      cubit.setSearchQuery(query, loadedState);
+    }
+  }
+
+  void onNavigate1(BuildContext context) {
+    // Navigate to screen 1
+    Navigator.pushNamed(context, HomeScreen.id);
+  }
+
+  void onNavigate2(BuildContext context) {
+    // Navigate to screen 2
+    Navigator.pushNamed(context, ExploreScreen.id);
+  }
+
+  void navigate3(BuildContext context) {}
+
+  void navigate4(BuildContext context) {
+    Navigator.pushNamed(context, FavouriteView.id);
+  }
+
+  void navigate5(BuildContext context) {}
+
+  @override
+  void dispose() {
+    cubit.close();
+    super.dispose();
+  }
+
+  Widget buildRow({
     required String boldText,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(boldText,
-            style: const TextStyle(
-                color: Color(0xff181725),
-                fontWeight: FontWeight.bold,
-                fontSize: 24)),
+        Text(
+          boldText,
+          style: const TextStyle(
+            color: Color(0xff181725),
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+        ),
         const Spacer(),
         const Text(
           "See all",
           style: TextStyle(color: Color(0xFF8D070F), fontSize: 16),
-        )
+        ),
       ],
     );
   }
 
   Widget buildProductRows({
+    @required List<ProductContainer>? products,
     required String imagePath1,
     required String productName1,
     required String productDetails1,
@@ -286,9 +344,8 @@ class _HomeScreenState extends State<HomeScreen> {
         productDetails: productDetails2,
         productPrice: productPrice2,
       ),
-      // Add more products for each row as needed
     ].where((product) {
-      final lowerCaseQuery = _searchQuery.toLowerCase();
+      final lowerCaseQuery = cubit.searchQuery.toLowerCase();
       final lowerCaseProductName = product.productName.toLowerCase();
       return lowerCaseProductName.contains(lowerCaseQuery);
     }).toList();
