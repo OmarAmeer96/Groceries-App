@@ -7,6 +7,7 @@ import 'package:online_groceries_app/screens/AccountView.dart';
 import '../widgets/custom_gnav_bar.dart';
 import '../widgets/custom_product_container.dart';
 import 'FavouriteView.dart';
+import 'MyCartView.dart';
 import 'explore_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,7 +25,9 @@ void navigate2(BuildContext context) {
   Navigator.pushNamed(context, ExploreScreen.id);
 }
 
-void navigate3(BuildContext context) {}
+void navigate3(BuildContext context) {
+  Navigator.pushNamed(context, MyCartView.id);
+}
 
 void navigate4(BuildContext context) {
   Navigator.pushNamed(context, FavouriteView.id);

@@ -1,7 +1,7 @@
 // ------------------------------ Esraa Elnajjar ---------------------------------
 
-
 import 'package:flutter/material.dart';
+import 'package:online_groceries_app/screens/MyCartView.dart';
 import '../widgets/auth_util.dart';
 import '../widgets/custom_gnav_bar.dart';
 import 'FavouriteView.dart';
@@ -26,7 +26,9 @@ void navigate2(BuildContext context) {
   Navigator.pushNamed(context, ExploreScreen.id);
 }
 
-void navigate3(BuildContext context) {}
+void navigate3(BuildContext context) {
+  Navigator.pushNamed(context, MyCartView.id);
+}
 
 void navigate4(BuildContext context) {
   Navigator.pushNamed(context, FavouriteView.id);

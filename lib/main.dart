@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:online_groceries_app/screens/AccountView.dart';
 import 'firebase_options.dart';
 import 'screens/FavouriteView.dart';
+import 'screens/MyCartView.dart';
 import 'screens/apple_detail.dart';
 import 'screens/bananas_detail.dart';
 import 'screens/beef_bone_detail.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         DairyAndEggsScreen.id: (context) => const DairyAndEggsScreen(),
         FavouriteView.id: (context) => const FavouriteView(),
         AccountView.id: (context) => const AccountView(),
+        MyCartView.id: (context) => const MyCartView(),
       },
       initialRoute: SplashScreen.id,
     );

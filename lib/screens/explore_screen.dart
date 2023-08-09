@@ -1,6 +1,9 @@
 // ------------------------------ Mohamed Elsanteel ---------------------------------
 
 import 'package:flutter/material.dart';
+import 'package:online_groceries_app/screens/AccountView.dart';
+import 'package:online_groceries_app/screens/FavouriteView.dart';
+import 'package:online_groceries_app/screens/MyCartView.dart';
 
 import '../widgets/custom_gnav_bar.dart';
 import 'beverages_screen.dart';
@@ -24,11 +27,17 @@ void navigate2(BuildContext context) {
   Navigator.pushNamed(context, ExploreScreen.id);
 }
 
-void navigate3(BuildContext context) {}
+void navigate3(BuildContext context) {
+  Navigator.pushNamed(context, MyCartView.id);
+}
 
-void navigate4(BuildContext context) {}
+void navigate4(BuildContext context) {
+  Navigator.pushNamed(context, FavouriteView.id);
+}
 
-void navigate5(BuildContext context) {}
+void navigate5(BuildContext context) {
+  Navigator.pushNamed(context, AccountView.id);
+}
 
 class _ExploreScreenState extends State<ExploreScreen> {
   int currentIndex = 1;

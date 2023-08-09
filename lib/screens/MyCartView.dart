@@ -1,28 +1,49 @@
 // ------------------------------ Esraa Elnajjar ---------------------------------
 
-
-
 import 'package:flutter/material.dart';
-
-import '../widgets/CustomButton.dart';
-import '../widgets/Header.dart';
+import 'package:online_groceries_app/widgets/custom_main_button.dart';
 import '../widgets/ListView.dart';
 
-
-class MyCartView extends StatelessWidget{
+class MyCartView extends StatelessWidget {
   const MyCartView({super.key});
+
+  static String id = 'MyCartView';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Column(
+      body: Column(
         children: [
-          Header(text: "My Cart",),
+          Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back),
+                ),
+                const Text(
+                  "My Cart",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: "Gilroy-Bold",
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(child: ListVieww()),
-          CustomButton(text: "Go To Checkout",),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: CustomMainButton(
+              text: "Go To Checkout",
+              onPressed: () {},
+            ),
+          ),
         ],
-      )
+      ),
     );
   }
-
 }
