@@ -8,6 +8,8 @@ import 'FavouriteView.dart';
 import 'explore_screen.dart';
 import 'home_screen.dart';
 import 'sign_up_screen.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class AccountView extends StatefulWidget {
   static String id = 'AccountView';
@@ -39,6 +41,9 @@ void navigate5(BuildContext context) {
 }
 
 class _AccountViewState extends State<AccountView> {
+  XFile? _imagefile;
+
+  final ImagePicker picker=ImagePicker();
   @override
   Widget build(BuildContext context) {
     int currentIndex = 4;
@@ -57,34 +62,43 @@ class _AccountViewState extends State<AccountView> {
           children: [
             Row(
               children: [
-                SizedBox(
-                  width: 20,
-                ),
+                SizedBox(width: 20,),
                 Padding(
                   padding: const EdgeInsets.only(top: 70),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/ya.png"),
-                  ),
+                  child: Stack(children: [
+                    CircleAvatar(minRadius: 40,backgroundImage:
+                    _imagefile==null
+                        ?null
+                        :FileImage(File(_imagefile!.path)),),
+                    Positioned(
+                        bottom: 1,
+                        right: 1,
+                        child: InkWell(
+                          onTap: (){
+                            showModalBottomSheet(
+                                context: context,
+                                builder: ((builder)=>BottomSheet())
+                            );
+                          },
+                          child: Icon(
+                            Icons.camera_alt_outlined,size: 25,
+                            color: Colors.teal,
+                          ),
+                        )),
+                  ],),
                 ),
-                SizedBox(
-                  width: 30.0,
-                ),
+                SizedBox(width: 30.0,),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 70,
+                    SizedBox(height: 70,),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 85),
+                      child: Text("Esraa",style: TextStyle(fontSize: 18,fontFamily: 'Gilroy-Bold')),
                     ),
-                    Text("$firstName",
-                        style:
-                            TextStyle(fontSize: 18, fontFamily: 'Gilroy-Bold')),
-                    Text("$email",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'Gilroy-Bold',
-                            color: Color(0xFF7C7C7C))),
+                    Text("Esraa@Gmail.com",style: TextStyle(fontSize: 16,fontFamily: 'Gilroy-Bold',color: Color(0xFF7C7C7C))),
                   ],
                 ),
+
               ],
             ),
             SizedBox(
@@ -285,5 +299,50 @@ class _AccountViewState extends State<AccountView> {
             )
           ],
         ));
+  }
+  Widget BottomSheet(){
+    void takePhoto(ImageSource source)async{
+      final pickedFile=await picker.pickImage(source: source);
+      setState((){
+        _imagefile=pickedFile;
+      });
+    }
+    return Container(
+      height: 150.0,
+      //width: MediaQuery.of(context).size.width,
+      width: 150,
+      margin: EdgeInsets.symmetric(vertical: 20.0,horizontal: 20.0),
+      child: Row(
+        children: [
+          SizedBox(width: 80,),
+          Column(
+            children: [
+              Text("Choose Profile Photo",style: TextStyle(fontSize: 20.0,fontFamily:'Gilroy-Bold'),),
+              SizedBox(height: 20.0,),
+              Row(children: [
+                Column(
+                  children: [
+                    IconButton(onPressed: (){
+                      takePhoto(ImageSource.camera);
+                    }, icon: Icon(Icons.camera_alt)),
+                    Text("Camera",style: TextStyle(fontFamily:'Gilroy-Regular'),),
+                  ],
+                ),
+                SizedBox(width: 50,),
+                Column(
+                  children: [
+                    IconButton(onPressed: (){
+                      takePhoto(ImageSource.gallery);
+                    }, icon: Icon(Icons.camera)),
+                    Text("Gallery",style: TextStyle(fontFamily:'Gilroy-Regular'),),
+                  ],
+                ),
+              ],),
+
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
