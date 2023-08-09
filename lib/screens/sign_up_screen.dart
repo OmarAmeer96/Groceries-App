@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
+import '../widgets/is_validEmail_method.dart';
 import '../widgets/show_snack_bar.dart';
 import 'sign_in_screen.dart';
 
@@ -216,9 +217,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               text: "Sign Up",
                               onPressed: () async {
                                 if (_form.currentState!.validate()) {
-                                  setState(() {
-                                    _isLoading = true;
-                                  });
+                                  setState(
+                                    () {
+                                      _isLoading = true;
+                                    },
+                                  );
                                   try {
                                     UserCredential userCredential =
                                         await FirebaseAuth.instance
@@ -233,9 +236,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       context,
                                       "Your account successfully created.\nPlease verify your email then Sign in.",
                                     );
-                                    setState(() {
-                                      _isLoading = false;
-                                    });
+                                    setState(
+                                      () {
+                                        _isLoading = false;
+                                      },
+                                    );
                                   } on FirebaseAuthException catch (e) {
                                     if (e.code == 'weak-password') {
                                       showSnackBar(context,
@@ -245,14 +250,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       showSnackBar(context,
                                           "The account already exists for that email.");
                                     }
-                                    setState(() {
-                                      _isLoading = false;
-                                    });
+                                    setState(
+                                      () {
+                                        _isLoading = false;
+                                      },
+                                    );
                                   } catch (e) {
                                     showSnackBar(context, e.toString());
-                                    setState(() {
-                                      _isLoading = false;
-                                    });
+                                    setState(
+                                      () {
+                                        _isLoading = false;
+                                      },
+                                    );
                                   }
                                 }
                               },
@@ -300,11 +309,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  }
-
-  bool isValidEmail(String email) {
-    final emailRegex =
-        RegExp(r'^[\w\.-]+@([a-zA-Z\d-]+\.)+[a-zA-Z]{2,4}(?=\s*$)');
-    return emailRegex.hasMatch(email);
   }
 }

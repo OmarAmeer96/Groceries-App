@@ -1,13 +1,13 @@
 // ------------------------------ Esraa Elnajjar ---------------------------------
 
+
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/sign_in_screen.dart';
-import 'package:online_groceries_app/screens/sign_up_screen.dart';
 import '../widgets/auth_util.dart';
 import '../widgets/custom_gnav_bar.dart';
 import 'FavouriteView.dart';
 import 'explore_screen.dart';
 import 'home_screen.dart';
+import 'sign_up_screen.dart';
 
 class AccountView extends StatefulWidget {
   static String id = 'AccountView';

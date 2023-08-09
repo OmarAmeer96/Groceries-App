@@ -6,6 +6,7 @@ import '../widgets/auth_util.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
+import '../widgets/is_validEmail_method.dart';
 import '../widgets/show_snack_bar.dart';
 import 'home_screen.dart';
 
@@ -29,12 +30,6 @@ class _SignInScreenState extends State<SignInScreen> {
   final _passwordController = TextEditingController();
 
   bool _isLoading = false;
-
-  bool isValidEmail(String email) {
-    final emailRegex =
-        RegExp(r'^[\w\.-]+@([a-zA-Z\d-]+\.)+[a-zA-Z]{2,4}(?=\s*$)');
-    return emailRegex.hasMatch(email);
-  }
 
   void _resetPassword(BuildContext context) async {
     final String email = _emailController.text.trim();
@@ -163,9 +158,11 @@ class _SignInScreenState extends State<SignInScreen> {
                               text: "Sign In",
                               onPressed: () async {
                                 if (_form.currentState!.validate()) {
-                                  setState(() {
-                                    _isLoading = true;
-                                  });
+                                  setState(
+                                    () {
+                                      _isLoading = true;
+                                    },
+                                  );
                                   try {
                                     // ignore: unused_local_variable
                                     UserCredential user = await FirebaseAuth
