@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_groceries_app/cubits/signup_cubit/signup_cubit.dart';
 import 'cubits/signin_cubit/signin_cubit.dart';
 import 'firebase_options.dart';
 import 'screens/AccountView.dart';
@@ -36,8 +37,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SigninCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SigninCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SignupCubit(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Groceries App',
@@ -46,7 +54,7 @@ class MyApp extends StatelessWidget {
           OnBoardingScreen.id: (context) => OnBoardingScreen(),
           GetStartedScreen.id: (context) => const GetStartedScreen(),
           SignInScreen.id: (context) => SignInScreen(),
-          SignUpScreen.id: (context) => const SignUpScreen(),
+          SignUpScreen.id: (context) => SignUpScreen(),
           HomeScreen.id: (context) => const HomeScreen(),
           AppleDetail.id: (context) => const AppleDetail(),
           BananaDetail.id: (context) => const BananaDetail(),
