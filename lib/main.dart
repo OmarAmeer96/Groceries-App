@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         DairyAndEggsScreen.id: (context) => const DairyAndEggsScreen(),
         FavouriteView.id: (context) => const FavouriteView(),
         AccountView.id: (context) => const AccountView(),
-        MyCartView.id: (context) => const MyCartView(),
+        MyCartView.id: (context) =>  MyCartView(),
       },
       initialRoute: SplashScreen.id,
     );

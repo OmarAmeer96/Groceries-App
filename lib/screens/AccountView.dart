@@ -10,6 +10,7 @@ import 'home_screen.dart';
 import 'sign_up_screen.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountView extends StatefulWidget {
   static String id = 'AccountView';
@@ -42,8 +43,12 @@ void navigate5(BuildContext context) {
 
 class _AccountViewState extends State<AccountView> {
   XFile? _imagefile;
-
   final ImagePicker picker=ImagePicker();
+  @override
+  void initState(){
+    super.initState();
+    LoadImage(_imagefile);
+  }
   @override
   Widget build(BuildContext context) {
     int currentIndex = 4;
@@ -69,7 +74,8 @@ class _AccountViewState extends State<AccountView> {
                     CircleAvatar(minRadius: 40,backgroundImage:
                     _imagefile==null
                         ?null
-                        :FileImage(File(_imagefile!.path)),),
+                        :FileImage(File(_imagefile!.path)),
+                    ),
                     Positioned(
                         bottom: 1,
                         right: 1,
@@ -93,9 +99,9 @@ class _AccountViewState extends State<AccountView> {
                     SizedBox(height: 70,),
                     Padding(
                       padding: const EdgeInsets.only(right: 85),
-                      child: Text("Esraa",style: TextStyle(fontSize: 18,fontFamily: 'Gilroy-Bold')),
+                      child: Text("$firstName",style: TextStyle(fontSize: 18,fontFamily: 'Gilroy-Bold')),
                     ),
-                    Text("Esraa@Gmail.com",style: TextStyle(fontSize: 16,fontFamily: 'Gilroy-Bold',color: Color(0xFF7C7C7C))),
+                    Text("$email",style: TextStyle(fontSize: 16,fontFamily: 'Gilroy-Bold',color: Color(0xFF7C7C7C))),
                   ],
                 ),
 
@@ -113,9 +119,7 @@ class _AccountViewState extends State<AccountView> {
                       SizedBox(
                         width: 20.0,
                       ),
-                      ImageIcon(
-                        AssetImage("assets/images/Orders icon.png"),
-                      ),
+                      Icon(Icons.shopping_cart_outlined),
                       SizedBox(
                         width: 20.0,
                       ),
@@ -130,7 +134,12 @@ class _AccountViewState extends State<AccountView> {
                         width: 200.0,
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  MyCartView()),
+                            );
+                          },
                           icon: Icon(Icons.arrow_forward_ios_rounded)),
                     ],
                   ),
@@ -190,7 +199,7 @@ class _AccountViewState extends State<AccountView> {
                       SizedBox(
                         width: 20.0,
                       ),
-                      Icon(Icons.published_with_changes_sharp),
+                      Icon(Icons.sunny),
                       SizedBox(
                         width: 20.0,
                       ),
@@ -305,6 +314,7 @@ class _AccountViewState extends State<AccountView> {
       final pickedFile=await picker.pickImage(source: source);
       setState((){
         _imagefile=pickedFile;
+        saveImage(_imagefile!.path);
       });
     }
     return Container(
@@ -344,5 +354,14 @@ class _AccountViewState extends State<AccountView> {
         ],
       ),
     );
+  }
+
+  void saveImage(path) async{
+    SharedPreferences saveimage=await SharedPreferences.getInstance();
+    saveimage.setString("imagepath", path);
+  }
+  void LoadImage(path) async{
+    SharedPreferences saveimage=await SharedPreferences.getInstance();
+    saveimage.getString("imagepath");
   }
 }
