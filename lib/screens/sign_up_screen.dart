@@ -5,7 +5,7 @@ import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
 import '../widgets/is_validEmail_method.dart';
-import '../widgets/show_snack_bar.dart';
+import '../helpers/show_snack_bar.dart';
 import 'sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {

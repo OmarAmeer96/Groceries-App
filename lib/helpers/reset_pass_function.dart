@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:online_groceries_app/widgets/show_snack_bar.dart';
+import 'package:online_groceries_app/helpers/show_snack_bar.dart';
 
 Future <void> resetPassword(
   BuildContext context, {

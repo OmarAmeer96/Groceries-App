@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/is_validEmail_method.dart';
-import '../widgets/reset_pass_function.dart';
+import '../helpers/reset_pass_function.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
