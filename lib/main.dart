@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/AccountView.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'cubits/signin_cubit/signin_cubit.dart';
 import 'firebase_options.dart';
+import 'screens/AccountView.dart';
 import 'screens/FavouriteView.dart';
 import 'screens/MyCartView.dart';
 import 'screens/apple_detail.dart';
@@ -34,31 +36,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Groceries App',
-      routes: {
-        SplashScreen.id: (context) => const SplashScreen(),
-        OnBoardingScreen.id: (context) => OnBoardingScreen(),
-        GetStartedScreen.id: (context) => const GetStartedScreen(),
-        SignInScreen.id: (context) => const SignInScreen(),
-        SignUpScreen.id: (context) => const SignUpScreen(),
-        HomeScreen.id: (context) => const HomeScreen(),
-        AppleDetail.id: (context) => const AppleDetail(),
-        BananaDetail.id: (context) => const BananaDetail(),
-        BeefBoneDetail.id: (context) => const BeefBoneDetail(),
-        BellPepperRedDetail.id: (context) => const BellPepperRedDetail(),
-        BroilerChickenDetail.id: (context) => const BroilerChickenDetail(),
-        GingerDetail.id: (context) => const GingerDetail(),
-        ExploreScreen.id: (context) => const ExploreScreen(),
-        BeveragesScreen.id: (context) => const BeveragesScreen(),
-        DairyAndEggsScreen.id: (context) => const DairyAndEggsScreen(),
-        FavouriteView.id: (context) => const FavouriteView(),
-        AccountView.id: (context) => const AccountView(),
-        MyCartView.id: (context) => MyCartView(),
-        ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
-      },
-      initialRoute: SplashScreen.id,
+    return BlocProvider(
+      create: (context) => SigninCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Groceries App',
+        routes: {
+          SplashScreen.id: (context) => const SplashScreen(),
+          OnBoardingScreen.id: (context) => OnBoardingScreen(),
+          GetStartedScreen.id: (context) => const GetStartedScreen(),
+          SignInScreen.id: (context) => SignInScreen(),
+          SignUpScreen.id: (context) => const SignUpScreen(),
+          HomeScreen.id: (context) => const HomeScreen(),
+          AppleDetail.id: (context) => const AppleDetail(),
+          BananaDetail.id: (context) => const BananaDetail(),
+          BeefBoneDetail.id: (context) => const BeefBoneDetail(),
+          BellPepperRedDetail.id: (context) => const BellPepperRedDetail(),
+          BroilerChickenDetail.id: (context) => const BroilerChickenDetail(),
+          GingerDetail.id: (context) => const GingerDetail(),
+          ExploreScreen.id: (context) => const ExploreScreen(),
+          BeveragesScreen.id: (context) => const BeveragesScreen(),
+          DairyAndEggsScreen.id: (context) => const DairyAndEggsScreen(),
+          FavouriteView.id: (context) => const FavouriteView(),
+          AccountView.id: (context) => const AccountView(),
+          MyCartView.id: (context) => MyCartView(),
+          ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
+        },
+        initialRoute: SplashScreen.id,
+      ),
     );
   }
 }

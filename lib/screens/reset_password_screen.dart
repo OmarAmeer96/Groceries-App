@@ -48,7 +48,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 260),
+                    const SizedBox(height: 270),
                     const Text(
                       "Forgot Password",
                       style: TextStyle(
