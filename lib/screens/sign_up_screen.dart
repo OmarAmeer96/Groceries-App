@@ -68,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
-                      height: 250,
+                      height: 240,
                     ),
                     const Text(
                       "Sign Up",
