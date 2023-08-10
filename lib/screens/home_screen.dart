@@ -3,9 +3,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_groceries_app/screens/AccountView.dart';
-
 import '../widgets/custom_gnav_bar.dart';
-import '../widgets/custom_product_container.dart';
+import '../widgets/build_row.dart';
+import '../widgets/build_product_rows.dart';
+import '../widgets/build_category_container.dart';
 import 'FavouriteView.dart';
 import 'MyCartView.dart';
 import 'explore_screen.dart';
@@ -38,7 +39,6 @@ void navigate5(BuildContext context) {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _searchQuery = '';
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: TextField(
                   onChanged: (query) {
                     setState(() {
-                      _searchQuery = query;
+                      searchQuery = query;
                     });
                   },
                   decoration: const InputDecoration(
@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 2,
                   itemBuilder: (context, index) {
-                    return _buildCategoryContainer(
+                    return buildCategoryContainer(
                         categoryColor1: const Color(0xfffef2e4),
                         categoryImage1: "assets/images/pulses.png",
                         categoryName1: "Pulses",
@@ -180,144 +180,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Row _buildCategoryContainer(
-      {required Color categoryColor1,
-      required String categoryImage1,
-      required String categoryName1,
-      required Color categoryColor2,
-      required String categoryImage2,
-      required String categoryName2}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-            width: 200,
-            height: 105,
-            decoration: BoxDecoration(
-                color: categoryColor1, borderRadius: BorderRadius.circular(20)),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 20,
-                ),
-                Image.asset(categoryImage1),
-                const SizedBox(
-                  width: 15,
-                ),
-                Text(
-                  categoryName1,
-                  style: const TextStyle(
-                      color: Color(0xff3e423f),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                )
-              ],
-            )),
-        const SizedBox(
-          width: 20,
-        ),
-        Container(
-          width: 240,
-          height: 105,
-          decoration: BoxDecoration(
-              color: categoryColor2, borderRadius: BorderRadius.circular(20)),
-          child: Row(
-            children: [
-              const SizedBox(
-                width: 20,
-              ),
-              Image.asset(categoryImage2),
-              const SizedBox(
-                width: 15,
-              ),
-              Text(
-                categoryName2,
-                style: const TextStyle(
-                    color: Color(0xff3e423f),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(width: 20),
-      ],
-    );
-  }
-
-  Row buildRow({
-    required String boldText,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(boldText,
-            style: const TextStyle(
-                color: Color(0xff181725),
-                fontWeight: FontWeight.bold,
-                fontFamily: "Gilroy",
-                fontSize: 24)),
-        const Spacer(),
-        const Text(
-          "See all",
-          style: TextStyle(color: Color(0xFF8D070F), fontSize: 16),
-        )
-      ],
-    );
-  }
-
-  Widget buildProductRows({
-    required String imagePath1,
-    required String productName1,
-    required String productDetails1,
-    required String productPrice1,
-    required String imagePath2,
-    required String productName2,
-    required String productDetails2,
-    required String productPrice2,
-  }) {
-    final filteredProducts = [
-      ProductContainer(
-        imagePath: imagePath1,
-        productName: productName1,
-        productDetails: productDetails1,
-        productPrice: productPrice1,
-      ),
-      ProductContainer(
-        imagePath: imagePath2,
-        productName: productName2,
-        productDetails: productDetails2,
-        productPrice: productPrice2,
-      ),
-    ].where((product) {
-      final lowerCaseQuery = _searchQuery.toLowerCase();
-      final lowerCaseProductName = product.productName.toLowerCase();
-      return lowerCaseProductName.contains(lowerCaseQuery);
-    }).toList();
-
-    return SizedBox(
-      height: 249,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: filteredProducts.length,
-        itemBuilder: (context, index) {
-          return buildProductRow(filteredProducts);
-        },
-      ),
-    );
-  }
-
-  Widget buildProductRow(List<Widget> items) {
-    return Row(
-      children: [
-        for (var item in items) ...[
-          item,
-          const SizedBox(width: 12),
-        ],
-      ],
     );
   }
 }
