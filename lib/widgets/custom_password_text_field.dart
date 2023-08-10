@@ -1,6 +1,5 @@
 // ------------------------------ Omar Ameer   ---------------------------------
 
-
 import 'package:flutter/material.dart';
 
 class CustomPasswordTextField extends StatefulWidget {

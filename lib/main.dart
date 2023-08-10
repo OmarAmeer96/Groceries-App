@@ -16,6 +16,7 @@ import 'screens/get_started_screen.dart';
 import 'screens/ginger_detail.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'screens/reset_password_screen.dart';
 import 'screens/sign_in_screen.dart';
 import 'screens/sign_up_screen.dart';
 import 'screens/splash_screen.dart';
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
         DairyAndEggsScreen.id: (context) => const DairyAndEggsScreen(),
         FavouriteView.id: (context) => const FavouriteView(),
         AccountView.id: (context) => const AccountView(),
-        MyCartView.id: (context) =>  MyCartView(),
+        MyCartView.id: (context) => MyCartView(),
+        ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
       },
       initialRoute: SplashScreen.id,
     );

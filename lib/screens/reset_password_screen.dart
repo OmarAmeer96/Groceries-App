@@ -1,33 +1,24 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:online_groceries_app/screens/sign_up_screen.dart';
-import '../widgets/auth_util.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
-import '../widgets/custom_password_text_field.dart';
 import '../widgets/is_validEmail_method.dart';
-import '../widgets/show_snack_bar.dart';
-import 'home_screen.dart';
-import 'reset_password_screen.dart';
+import '../widgets/reset_pass_function.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({Key? key}) : super(key: key);
 
-  static String id = "SignInScreen";
+  static String id = "ResetPasswordScreen";
 
   @override
   // ignore: library_private_types_in_public_api
-  _SignInScreenState createState() => _SignInScreenState();
+  _ResetPasswordScreenState createState() => _ResetPasswordScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final _form = GlobalKey<FormState>();
   String? email;
-  String? password;
-  String? rePassword;
 
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
 
   bool _isLoading = false;
 
@@ -57,9 +48,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 250),
+                    const SizedBox(height: 260),
                     const Text(
-                      "Sign In",
+                      "Forgot Password",
                       style: TextStyle(
                         color: Color(0xff181725),
                         fontSize: 26,
@@ -69,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      "Enter your email and password",
+                      "Enter your email",
                       style: TextStyle(
                         color: Color(0xff7C7C7C),
                         fontSize: 16,
@@ -77,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         fontFamily: "Gilroy-Medium",
                       ),
                     ),
-                    const SizedBox(height: 35),
+                    const SizedBox(height: 60),
                     CustomEmailTextField(
                       controller: _emailController,
                       onChanged: (data) {
@@ -92,44 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         return null;
                       },
                     ),
-                    const SizedBox(height: 15),
-                    CustomPasswordTextField(
-                      controller: _passwordController,
-                      text: "PASSWORD",
-                      onChanged: (data) {
-                        password = data;
-                      },
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter a password.';
-                        } else if (value.length < 6) {
-                          return 'Password must be at least 6 characters long.';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 15),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, ResetPasswordScreen.id);
-                      },
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Forgot password?",
-                            style: TextStyle(
-                              color: Color(0xff181725),
-                              fontSize: 15,
-                              decoration: TextDecoration.underline,
-                              fontFamily: "Gilroy-Medium",
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     Center(
                       child: _isLoading
                           ? const CircularProgressIndicator(
@@ -138,7 +92,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             )
                           : CustomMainButton(
-                              text: "Sign In",
+                              text: "Send Reset Email",
                               onPressed: () async {
                                 if (_form.currentState!.validate()) {
                                   setState(
@@ -147,29 +101,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                     },
                                   );
                                   try {
-                                    // ignore: unused_local_variable
-                                    UserCredential user = await FirebaseAuth
-                                        .instance
-                                        .signInWithEmailAndPassword(
-                                      email: email!,
-                                      password: password!,
+                                    await resetPassword(
+                                      context,
+                                      emailController: _emailController,
                                     );
-                                    // ignore: use_build_context_synchronously
-                                    showSnackBar(
-                                        context, "Successfully signed in.");
-                                    AuthUtil.storeUserEmail(email!);
-                                    // ignore: use_build_context_synchronously
-                                    Navigator.pushNamed(context, HomeScreen.id);
-                                  } on FirebaseAuthException catch (e) {
-                                    if (e.code == 'user-not-found') {
-                                      showSnackBar(context,
-                                          "No user found for that email.");
-                                    } else if (e.code == 'wrong-password') {
-                                      showSnackBar(context,
-                                          "Wrong password provided for that user.");
-                                    }
-                                  } catch (e) {
-                                    showSnackBar(context, e.toString());
                                   } finally {
                                     setState(
                                       () {
@@ -186,24 +121,15 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            "Don’t have an account? ",
-                            style: TextStyle(
-                              color: Color(0xff181725),
-                              fontSize: 15,
-                              fontFamily: "Gilroy-Medium",
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, SignUpScreen.id);
+                              Navigator.pop(context);
                             },
                             child: const Text(
-                              "Sign Up",
+                              "Back to Sign In screen?",
                               style: TextStyle(
                                 color: Color(0xff8D070F),
-                                fontSize: 15,
+                                fontSize: 16,
                                 decoration: TextDecoration.underline,
                                 fontFamily: "Gilroy-Medium",
                                 fontWeight: FontWeight.w600,
