@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_groceries_app/cubits/signin_cubit/signin_cubit.dart';
 import 'package:online_groceries_app/screens/sign_up_screen.dart';
+import '../helpers/validation_helper.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
-import '../helpers/is_validEmail_method.dart';
 import '../helpers/show_snack_bar.dart';
 import 'home_screen.dart';
 import 'reset_password_screen.dart';
@@ -91,12 +91,7 @@ class SignInScreen extends StatelessWidget {
                           email = data;
                         },
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter an email address.';
-                          } else if (!isValidEmail(value)) {
-                            return 'Please enter a valid email address.';
-                          }
-                          return null;
+                          return validateEmail(value!);
                         },
                       ),
                       const SizedBox(height: 15),
@@ -107,12 +102,7 @@ class SignInScreen extends StatelessWidget {
                           password = data;
                         },
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a password.';
-                          } else if (value.length < 6) {
-                            return 'Password must be at least 6 characters long.';
-                          }
-                          return null;
+                          return validatePassword(value!);
                         },
                       ),
                       const SizedBox(height: 15),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_groceries_app/helpers/validation_helper.dart';
 import '../cubits/signup_cubit/signup_cubit.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
-import '../helpers/is_validEmail_method.dart';
 import '../helpers/show_snack_bar.dart';
 import 'sign_in_screen.dart';
 
@@ -97,12 +97,7 @@ class SignUpScreen extends StatelessWidget {
                           email = data;
                         },
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter an email address.';
-                          } else if (!isValidEmail(value)) {
-                            return 'Please enter a valid email address.';
-                          }
-                          return null;
+                          return validateEmail(value!);
                         },
                       ),
                       const SizedBox(
@@ -115,12 +110,7 @@ class SignUpScreen extends StatelessWidget {
                           password = data;
                         },
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a password.';
-                          } else if (value.length < 6) {
-                            return 'Password must be at least 6 characters long.';
-                          }
-                          return null;
+                          return validatePassword(value!);
                         },
                       ),
                       const SizedBox(
@@ -133,10 +123,8 @@ class SignUpScreen extends StatelessWidget {
                           rePassword = data;
                         },
                         validator: (value) {
-                          if (value != _passwordController.text) {
-                            return 'Passwords do not match.';
-                          }
-                          return null;
+                          return validateRePassword(
+                              value!, _passwordController);
                         },
                       ),
                       const SizedBox(

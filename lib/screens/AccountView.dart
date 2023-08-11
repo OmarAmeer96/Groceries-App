@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:online_groceries_app/screens/MyCartView.dart';
-import '../widgets/auth_util.dart';
+import 'package:provider/provider.dart';
+import '../provider/dark_theme_provider.dart';
+import '../helpers/auth_util.dart';
 import '../widgets/custom_gnav_bar.dart';
 import 'FavouriteView.dart';
 import 'explore_screen.dart';
@@ -51,6 +53,7 @@ class _AccountViewState extends State<AccountView> {
   }
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     int currentIndex = 4;
     String? firstName = AuthUtil.getUserFirstName();
     String? email = AuthUtil.getUserEmail();
@@ -213,9 +216,11 @@ class _AccountViewState extends State<AccountView> {
                       SizedBox(
                         width: 200.0,
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.arrow_forward_ios_rounded)),
+                      Checkbox(
+                          value: themeChange.darkTheme,
+                          onChanged: (bool? value) {
+                            themeChange.darkTheme = value!;
+                          }),
                     ],
                   ),
                   Divider(),
