@@ -1,16 +1,11 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/Logo.png" alt="Online Groceries App Logo">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/Logo.png" alt="Online Groceries App Logo" width="20%">
 </p>
 
 <h1 align="center">Online Groceries App</h1>
 
 <p align="center">Bringing Freshness to Your Fingertips</p>
 
-<p align="center">
-  <a href="https://yourwebsite.com">
-    Explore the Demo
-  </a>
-</p>
 
 ## 🚀 Getting Started
 
