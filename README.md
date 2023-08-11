@@ -52,7 +52,7 @@ Have questions, feedback, or just want to say hi? Feel free to reach out to any 
   Email: [omar.ameer244@gmail.com](mailto:omar.ameer244@gmail.com)
 
 - **Mohamed Alaa**
-  Email: [mohamed.alaa@example.com](mailto:mohamed.alaa@example.com)
+  Email: [alsantel.ma@gmail.com](mailto:alsantel.ma@gmail.com)
 
 - **Esraa Elnajjar**
   Email: [esraa.elnajjar@example.com](mailto:esraa.elnajjar@example.com)
