@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_groceries_app/screens/FavouriteView.dart';
 import '../cubits/customproductdetails_cubit/productdetail_cubit.dart';
 import '../helpers/show_snack_bar.dart';
 import '../widgets/custom_main_button.dart';
@@ -15,6 +16,7 @@ class AppleDetail extends StatefulWidget {
     required this.price,
     required this.description,
   });
+
   static const String id = "apple-product-detail-screen";
 
   final String imagePath;
@@ -40,6 +42,11 @@ class _AppleDetailState extends State<AppleDetail> {
           isLoading = false;
           showSnackBar(context, state.successMessage);
           Navigator.pushNamed(context, MyCartView.id);
+        } else if (state is ProductdetailFavoriteAddedState) {
+          showSnackBar(context, 'This item is added to favorites');
+          Navigator.pushNamed(context, FavouriteView.id);
+        } else if (state is ProductdetailFavoriteRemovedState) {
+          showSnackBar(context, 'This item is removed from favorites');
         }
       },
       child: Scaffold(
@@ -90,17 +97,19 @@ class _AppleDetailState extends State<AppleDetail> {
                       ),
                     ),
                     const Spacer(),
-                    IconButton(
-                      icon: Icon(
-                        cubit.isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: cubit.isFavorite ? Colors.red : null,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          cubit.isFavorite = !cubit.isFavorite;
-                        });
+                    BlocBuilder<ProductdetailCubit, ProductdetailState>(
+                      builder: (context, state) {
+                        return IconButton(
+                          icon: Icon(
+                            cubit.isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: cubit.isFavorite ? Colors.red : null,
+                          ),
+                          onPressed: () {
+                            cubit.toggleFavorite();
+                          },
+                        );
                       },
                     ),
                   ],

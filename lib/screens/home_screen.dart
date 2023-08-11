@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buildRow(boldText: "Groceries"),
               const SizedBox(height: 15),
               SizedBox(
-                height: 105, // Adjust the height as needed
+                height: 105,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 2,

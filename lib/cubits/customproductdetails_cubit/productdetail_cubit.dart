@@ -27,4 +27,14 @@ class ProductdetailCubit extends Cubit<ProductdetailState> {
     emit(ProductdetailMainButtonSuccessState(
         successMessage: "This item had been added to Basket"));
   }
+
+  void toggleFavorite() {
+    isFavorite = !isFavorite;
+    emit(ProductdetailToggleFavoriteState(isFavorite: isFavorite));
+    if (isFavorite) {
+      emit(ProductdetailFavoriteAddedState());
+    } else {
+      emit(ProductdetailFavoriteRemovedState());
+    }
+  }
 }
