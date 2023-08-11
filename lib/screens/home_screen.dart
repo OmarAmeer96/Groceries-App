@@ -41,6 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    return homescreen(context);
+  }
+
+  Scaffold homescreen(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomGNavBar(
         navigate1: () => navigate1(context),
