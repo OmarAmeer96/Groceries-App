@@ -24,6 +24,7 @@ class ProductdetailCubit extends Cubit<ProductdetailState> {
   Future<void> showLoading() async {
     emit(ProductdetailMainButtonLoadingState());
     await Future.delayed(Duration(seconds: 2));
-    emit(ProductdetailMainButtonSuccessState());
+    emit(ProductdetailMainButtonSuccessState(
+        successMessage: "This item had been added to Basket"));
   }
 }

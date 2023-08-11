@@ -11,4 +11,7 @@ class ProductdetailDecrementState extends ProductdetailState {}
 
 class ProductdetailIncrementState extends ProductdetailState {}
 
-class ProductdetailMainButtonSuccessState extends ProductdetailState {}
+class ProductdetailMainButtonSuccessState extends ProductdetailState {
+  String successMessage;
+  ProductdetailMainButtonSuccessState({required this.successMessage}) {}
+}

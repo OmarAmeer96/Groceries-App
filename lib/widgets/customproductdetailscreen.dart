@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_groceries_app/helpers/show_snack_bar.dart';
+import 'package:online_groceries_app/screens/MyCartView.dart';
 import '../cubits/customproductdetails_cubit/productdetail_cubit.dart';
 import 'custom_main_button.dart';
 
@@ -45,6 +47,8 @@ class _CustomProductDetailState extends State<CustomProductDetail> {
           isLoading = true;
         } else if (state is ProductdetailMainButtonSuccessState) {
           isLoading = false;
+          showSnackBar(context, state.successMessage);
+          Navigator.pushNamed(context, MyCartView.id);
         }
       },
       child: Scaffold(
