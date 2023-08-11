@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_groceries_app/cubits/reset_cubit/reset_cubit.dart';
 import 'package:online_groceries_app/cubits/signup_cubit/signup_cubit.dart';
 import 'cubits/signin_cubit/signin_cubit.dart';
 import 'firebase_options.dart';
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SignupCubit(),
         ),
+        BlocProvider(
+          create: (context) => ResetCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -68,7 +72,7 @@ class MyApp extends StatelessWidget {
           FavouriteView.id: (context) => const FavouriteView(),
           AccountView.id: (context) => const AccountView(),
           MyCartView.id: (context) => MyCartView(),
-          ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
+          ResetPasswordScreen.id: (context) => ResetPasswordScreen(),
         },
         initialRoute: SplashScreen.id,
       ),
