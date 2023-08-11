@@ -2,12 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_groceries_app/models/product_model.dart';
-
 import '../cubits/customproductdetails_cubit/productdetail_cubit.dart';
 import '../helpers/show_snack_bar.dart';
 import '../widgets/custom_main_button.dart';
-import '../widgets/customproductdetailscreen.dart';
 import 'MyCartView.dart';
 
 class AppleDetail extends StatefulWidget {

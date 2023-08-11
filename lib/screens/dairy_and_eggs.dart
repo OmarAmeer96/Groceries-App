@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_product_container.dart';
 
 class DairyAndEggsScreen extends StatefulWidget {
   const DairyAndEggsScreen({super.key});
@@ -12,6 +11,7 @@ class DairyAndEggsScreen extends StatefulWidget {
 }
 
 class _DairyAndEggsScreenState extends State<DairyAndEggsScreen> {
+  // ignore: unused_field
   final String _searchQuery = '';
   List<Map<String, dynamic>> customContainers = [
     {

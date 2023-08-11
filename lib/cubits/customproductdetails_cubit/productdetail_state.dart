@@ -11,6 +11,7 @@ class ProductdetailDecrementState extends ProductdetailState {}
 
 class ProductdetailIncrementState extends ProductdetailState {}
 
+// ignore: must_be_immutable
 class ProductdetailMainButtonSuccessState extends ProductdetailState {
   String successMessage;
   ProductdetailMainButtonSuccessState({required this.successMessage}) {}

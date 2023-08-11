@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_groceries_app/cubits/reset_cubit/reset_cubit.dart';
+import 'package:online_groceries_app/helpers/validation_helper.dart';
 import '../helpers/show_snack_bar.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
-import '../helpers/is_validEmail_method.dart';
 
 // ignore: must_be_immutable
 class ResetPasswordScreen extends StatelessWidget {
@@ -87,12 +87,7 @@ class ResetPasswordScreen extends StatelessWidget {
                           email = data;
                         },
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter an email address.';
-                          } else if (!isValidEmail(value)) {
-                            return 'Please enter a valid email address.';
-                          }
-                          return null;
+                          return validateEmail(value!);
                         },
                       ),
                       const SizedBox(height: 20),

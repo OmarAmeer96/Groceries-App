@@ -52,6 +52,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     List<Widget> filteredContainers = customContainers
         .where((container) => container['text']
             .toString()
