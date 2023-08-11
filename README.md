@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://yourwebsite.com/awesome_logo.png" alt="Online Groceries App Logo">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/Logo.png" alt="Online Groceries App Logo" width="20%">
 </p>
 
 <h1 align="center">Online Groceries App</h1>
@@ -42,9 +42,11 @@ Together, we're weaving code and magic to redefine how you shop for groceries.
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://yourwebsite.com/screenshot1.png" alt="Screenshot 1" width="30%">
-  <img src="https://yourwebsite.com/screenshot2.png" alt="Screenshot 2" width="30%">
-  <img src="https://yourwebsite.com/screenshot3.png" alt="Screenshot 3" width="30%">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/screenshot1.png" alt="Screenshot 1" width="30%">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/screenshot2.png" alt="Screenshot 2" width="30%">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/screenshot3.png" alt="Screenshot 3" width="30%">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/screenshot4.png" alt="Screenshot 4" width="30%">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/screenshot5.png" alt="Screenshot 5" width="30%">
 </p>
 
 ## 📞 Contact Us
@@ -56,4 +58,3 @@ Have questions, feedback, or just want to say hi? Reach out to us at [contact@on
 <p align="center">
   Crafted with ❤️ by the Online Groceries Team
 </p>
-
