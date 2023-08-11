@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/Logo.png" alt="Online Groceries App Logo" width="20%">
+  <img src="https://raw.githubusercontent.com/OmarAmeer96/Groceries-Photos/main/Logo.png" alt="Online Groceries App Logo" width="30%">
 </p>
 
 <h1 align="center">Online Groceries App</h1>
