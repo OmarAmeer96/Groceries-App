@@ -50,7 +50,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ResetCubit(),
         ),
-        BlocProvider(create: (context) => ProductdetailCubit()..showLoading())
+        BlocProvider(
+          create: (context) => ProductdetailCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

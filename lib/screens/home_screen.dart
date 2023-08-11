@@ -1,6 +1,5 @@
 // ------------------------------ Mohamed Elsanteel ---------------------------------
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_groceries_app/screens/AccountView.dart';
 import '../widgets/custom_gnav_bar.dart';
@@ -70,20 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(
                 height: 15,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.location_solid),
-                  SizedBox(width: 10),
-                  Text(
-                    "Tanta, Egypt",
-                    style: TextStyle(
-                        color: Color(0xff4C4F4D),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
               ),
               const SizedBox(height: 20),
               Container(

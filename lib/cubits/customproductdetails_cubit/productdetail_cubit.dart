@@ -21,9 +21,9 @@ class ProductdetailCubit extends Cubit<ProductdetailState> {
     emit(ProductdetailDecrementState());
   }
 
-  void showLoading() async {
+  Future<void> showLoading() async {
     emit(ProductdetailMainButtonLoadingState());
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 2));
     emit(ProductdetailMainButtonSuccessState());
   }
 }
