@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_groceries_app/cubits/reset_cubit/reset_cubit.dart';
 import 'package:online_groceries_app/cubits/signup_cubit/signup_cubit.dart';
+import 'cubits/customproductdetails_cubit/productdetail_cubit.dart';
 import 'cubits/signin_cubit/signin_cubit.dart';
 import 'firebase_options.dart';
 import 'screens/AccountView.dart';
@@ -49,10 +50,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ResetCubit(),
         ),
+        BlocProvider(create: (context) => ProductdetailCubit()..showLoading())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Groceries App',
+        initialRoute: SplashScreen.id,
         routes: {
           SplashScreen.id: (context) => const SplashScreen(),
           OnBoardingScreen.id: (context) => OnBoardingScreen(),
@@ -74,7 +77,6 @@ class MyApp extends StatelessWidget {
           MyCartView.id: (context) => MyCartView(),
           ResetPasswordScreen.id: (context) => ResetPasswordScreen(),
         },
-        initialRoute: SplashScreen.id,
       ),
     );
   }
