@@ -32,8 +32,8 @@ class SignInScreen extends StatelessWidget {
         if (state is SigninLoading) {
           _isLoading = true;
         } else if (state is SigninSuccess) {
-          _isLoading = false;
           Navigator.pushNamed(context, HomeScreen.id);
+          _isLoading = false;
           showSnackBar(context, state.successMessage);
         } else if (state is SigninFailure) {
           showSnackBar(context, state.errorMessage);
