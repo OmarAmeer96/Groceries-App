@@ -4,7 +4,7 @@ import 'package:online_groceries_app/cubits/reset_cubit/reset_cubit.dart';
 import '../helpers/show_snack_bar.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
-import '../widgets/is_validEmail_method.dart';
+import '../helpers/is_validEmail_method.dart';
 
 // ignore: must_be_immutable
 class ResetPasswordScreen extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:online_groceries_app/screens/sign_up_screen.dart';
 import '../widgets/custom_email_text_field.dart';
 import '../widgets/custom_main_button.dart';
 import '../widgets/custom_password_text_field.dart';
-import '../widgets/is_validEmail_method.dart';
+import '../helpers/is_validEmail_method.dart';
 import '../helpers/show_snack_bar.dart';
 import 'home_screen.dart';
 import 'reset_password_screen.dart';

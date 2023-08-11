@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Groceries App',
-        initialRoute: SplashScreen.id,
         routes: {
           SplashScreen.id: (context) => const SplashScreen(),
           OnBoardingScreen.id: (context) => OnBoardingScreen(),
@@ -79,6 +78,7 @@ class MyApp extends StatelessWidget {
           MyCartView.id: (context) => MyCartView(),
           ResetPasswordScreen.id: (context) => ResetPasswordScreen(),
         },
+        initialRoute: SplashScreen.id,
       ),
     );
   }
