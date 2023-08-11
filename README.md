@@ -51,7 +51,18 @@ Together, we're weaving code and magic to redefine how you shop for groceries.
 
 ## 📞 Contact Us
 
-Have questions, feedback, or just want to say hi? Reach out to us at [contact@onlinegroceriesapp.com](mailto:omar.ameer244@gmail.com).
+Have questions, feedback, or just want to say hi? Feel free to reach out to any of our team members:
+
+- **Omar Ameer** (Team Leader)
+  Email: [omar.ameer244@gmail.com](mailto:omar.ameer244@gmail.com)
+
+- **Mohamed Alaa**
+  Email: [mohamed.alaa@example.com](mailto:mohamed.alaa@example.com)
+
+- **Esraa Elnajjar**
+  Email: [esraa.elnajjar@example.com](mailto:esraa.elnajjar@example.com)
+
+We're excited to hear from you and are here to assist you every step of the way!
 
 ---
 
