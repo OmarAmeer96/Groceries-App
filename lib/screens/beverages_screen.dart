@@ -90,58 +90,58 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  children: const [
-                    ProductContainer(
-                      imagePath: 'assets/images/diet_coke.png',
-                      productName: "Diet Coke",
-                      productDetails: "355ml, Price",
-                      productPrice: "1.99",
-                    ),
-                    ProductContainer(
-                      imagePath: 'assets/images/sprite_can.png',
-                      productName: "Sprite Can",
-                      productDetails: "325ml, Price",
-                      productPrice: "1.50",
-                    ),
-                    // Add more ProductContainer widgets here
-                    // For example:
-                    ProductContainer(
-                      imagePath: 'assets/images/apple_and_grape_juice.png',
-                      productName: "Apple & Grape Juice",
-                      productDetails: "2L, Price",
-                      productPrice: "15.99",
-                    ),
-                    ProductContainer(
-                      imagePath: 'assets/images/orange_juice.png',
-                      productName: "Orange Juice",
-                      productDetails: "2L, Price",
-                      productPrice: "15.99",
-                    ),
-                    ProductContainer(
-                      imagePath: 'assets/images/coca_cola_can.png',
-                      productName: "Coca Cola Can",
-                      productDetails: "325ml, Price",
-                      productPrice: "4.99",
-                    ),
-                    ProductContainer(
-                      imagePath: 'assets/images/pepsi_can.png',
-                      productName: "Pepsi Can",
-                      productDetails: "330ml, Price",
-                      productPrice: "4.99",
-                    ),
-                    ProductContainer(
-                      imagePath: 'assets/images/diet_coke.png',
-                      productName: "Diet Coke",
-                      productDetails: "355ml, Price",
-                      productPrice: "1.99",
-                    ),
-                    ProductContainer(
-                      imagePath: 'assets/images/sprite_can.png',
-                      productName: "Sprite Can",
-                      productDetails: "325ml, Price",
-                      productPrice: "1.50",
-                    ),
-                  ],
+                  // children: const [
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/diet_coke.png',
+                  //     productName: "Diet Coke",
+                  //     productDetails: "355ml, Price",
+                  //     productPrice: "1.99",
+                  //   ),
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/sprite_can.png',
+                  //     productName: "Sprite Can",
+                  //     productDetails: "325ml, Price",
+                  //     productPrice: "1.50",
+                  //   ),
+                  //   // Add more ProductContainer widgets here
+                  //   // For example:
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/apple_and_grape_juice.png',
+                  //     productName: "Apple & Grape Juice",
+                  //     productDetails: "2L, Price",
+                  //     productPrice: "15.99",
+                  //   ),
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/orange_juice.png',
+                  //     productName: "Orange Juice",
+                  //     productDetails: "2L, Price",
+                  //     productPrice: "15.99",
+                  //   ),
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/coca_cola_can.png',
+                  //     productName: "Coca Cola Can",
+                  //     productDetails: "325ml, Price",
+                  //     productPrice: "4.99",
+                  //   ),
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/pepsi_can.png',
+                  //     productName: "Pepsi Can",
+                  //     productDetails: "330ml, Price",
+                  //     productPrice: "4.99",
+                  //   ),
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/diet_coke.png',
+                  //     productName: "Diet Coke",
+                  //     productDetails: "355ml, Price",
+                  //     productPrice: "1.99",
+                  //   ),
+                  //   ProductContainer(
+                  //     imagePath: 'assets/images/sprite_can.png',
+                  //     productName: "Sprite Can",
+                  //     productDetails: "325ml, Price",
+                  //     productPrice: "1.50",
+                  //   ),
+                  // ],
                 ),
               ),
             ],

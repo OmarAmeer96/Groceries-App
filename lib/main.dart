@@ -12,7 +12,6 @@ import 'firebase_options.dart';
 import 'screens/AccountView.dart';
 import 'screens/FavouriteView.dart';
 import 'screens/MyCartView.dart';
-import 'screens/apple_detail.dart';
 import 'screens/bananas_detail.dart';
 import 'screens/beef_bone_detail.dart';
 import 'screens/bell_pepper_red_detail.dart';
@@ -94,7 +93,6 @@ class _MyAppState extends State<MyApp> {
                 SignInScreen.id: (context) => SignInScreen(),
                 SignUpScreen.id: (context) => SignUpScreen(),
                 HomeScreen.id: (context) => const HomeScreen(),
-                AppleDetail.id: (context) => const AppleDetail(),
                 BananaDetail.id: (context) => const BananaDetail(),
                 BeefBoneDetail.id: (context) => const BeefBoneDetail(),
                 BellPepperRedDetail.id: (context) =>
