@@ -55,7 +55,7 @@ Have questions, feedback, or just want to say hi? Feel free to reach out to any 
   Email: [alsantel.ma@gmail.com](mailto:alsantel.ma@gmail.com)
 
 - **Esraa Elnajjar**
-  Email: [esraa.elnajjar@example.com](mailto:esraa.elnajjar@example.com)
+  Email: [israaelnajjar664@gmail.com](mailto:esraa.elnajjar@example.com)
 
 We're excited to hear from you and are here to assist you every step of the way!
 
