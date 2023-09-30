@@ -59,6 +59,16 @@ Have questions, feedback, or just want to say hi? Feel free to reach out to any 
 
 We're excited to hear from you and are here to assist you every step of the way!
 
+<br><br>
+<div align="center">
+  <b>App Preview</b>
+</div>
+<br>
+
+<div align="center">
+  <video src="https://github.com/OmarAmeer96/Groceries-App/assets/93061060/76d101a8-b97b-41c2-afec-e7b6a128224f" controls></video>
+</div>
+<br>
 ---
 
 <p align="center">
